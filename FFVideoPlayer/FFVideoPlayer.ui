@@ -23,30 +23,89 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="VideoWidget" name="openGLWidget">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>800</width>
-      <height>450</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-   </widget>
-   <widget class="QSlider" name="sliderVolume">
-    <property name="geometry">
-     <rect>
-      <x>630</x>
-      <y>455</y>
-      <width>80</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QSlider::groove:horizontal 
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="VideoWidget" name="openGLWidget">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="MySlider" name="timeSlider">
+      <property name="styleSheet">
+       <string notr="true">QSlider::groove:horizontal {
+        height: 3px;
+        background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(124, 124, 124), stop: 1.0 rgb(72, 71, 71));
+}
+QSlider::handle:horizontal {
+        width: 8px;
+        background: rgb(255, 255, 255);
+        margin: -3px 0px -3px 0px;
+}
+</string>
+      </property>
+      <property name="maximum">
+       <number>999</number>
+      </property>
+      <property name="pageStep">
+       <number>10</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label_Playtime">
+        <property name="styleSheet">
+         <string notr="true">QLabel
+{
+	font-family: &quot;Microsoft YaHei&quot;;
+    font-size: 18px;
+    color: white;
+	background-color: rgb(53,53,53);
+}
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnPlayVideo">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnSetVolume">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="sliderVolume">
+        <property name="styleSheet">
+         <string notr="true">QSlider::groove:horizontal 
 {
         height: 3px;
         background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(124, 124, 124), stop: 1.0 rgb(72, 71, 71));
@@ -60,117 +119,22 @@ QSlider::handle:horizontal
         border-radius: 4px;
 }
 </string>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_Playtime">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>455</y>
-      <width>291</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel
-{
-	font-family: &quot;Microsoft YaHei&quot;;
-    font-size: 18px;
-    color: white;
-	background-color: rgb(53,53,53);
-}
-</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnPlayVideo">
-    <property name="geometry">
-     <rect>
-      <x>385</x>
-      <y>455</y>
-      <width>30</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnFullScreen">
-    <property name="geometry">
-     <rect>
-      <x>770</x>
-      <y>455</y>
-      <width>30</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="MySlider" name="timeSlider">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>430</y>
-      <width>800</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QSlider::groove:horizontal {
-        height: 3px;
-        background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(124, 124, 124), stop: 1.0 rgb(72, 71, 71));
-}
-QSlider::handle:horizontal {
-        width: 8px;
-        background: rgb(255, 255, 255);
-        margin: -3px 0px -3px 0px;
-}
-</string>
-    </property>
-    <property name="maximum">
-     <number>999</number>
-    </property>
-    <property name="pageStep">
-     <number>10</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnSetVolume">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>455</y>
-      <width>30</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnCutImage">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>455</y>
-      <width>30</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnFullScreen">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -178,7 +142,7 @@ QSlider::handle:horizontal {
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>23</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -194,7 +158,6 @@ QSlider::handle:horizontal {
      <string>帮助</string>
     </property>
     <addaction name="action_About"/>
-    <addaction name="action_GetSourceCode"/>
    </widget>
    <widget class="QMenu" name="menu_Set">
     <property name="title">

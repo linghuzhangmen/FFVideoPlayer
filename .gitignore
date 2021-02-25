@@ -26,3 +26,15 @@ x64\Release\avutil-56.dll
 x64\Release\postproc-55.dll
 x64\Release\swresample-3.dll
 x64\Release\swscale-5.dll
+/FFVideoPlayer/*.user
+/FFVideoPlayer/GeneratedFiles/Debug/moc_AboutDlg.cpp
+/FFVideoPlayer/GeneratedFiles/Debug/moc_FFVideoPlayer.cpp
+/FFVideoPlayer/GeneratedFiles/Debug/moc_MySlider.cpp
+/FFVideoPlayer/GeneratedFiles/Debug/moc_NetStreamDlg.cpp
+/FFVideoPlayer/GeneratedFiles/Debug/moc_NetStreamThread.cpp
+/FFVideoPlayer/GeneratedFiles/Debug/moc_VideoWidget.cpp
+/FFVideoPlayer/GeneratedFiles/qrc_FFVideoPlayer.cpp
+/FFVideoPlayer/GeneratedFiles/ui_AboutDlg.h
+/FFVideoPlayer/GeneratedFiles/ui_FFVideoPlayer.h
+/FFVideoPlayer/GeneratedFiles/ui_NetStreamDlg.h
+/FFVideoPlayer/GeneratedFiles/ui_StreamInfoDlg.h

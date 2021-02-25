@@ -49,7 +49,6 @@ private slots:
 	void OpenLocalVideo();
 	void OpenNetStreamDlg();
 	void PopAboutDlg();
-	void GetSourceCode();
 
 	//ÒôÁ¿µ÷½Ú
 	void volumeAdjust();

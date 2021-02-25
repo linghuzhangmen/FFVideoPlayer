@@ -15,7 +15,6 @@
 #include <QCursor>
 #include "AboutDlg.h"
 #include "NetStreamThread.h"
-#include "MyLog.h"
 #include <QDesktopServices>
 
 
@@ -40,7 +39,6 @@ FFVideoPlayer::FFVideoPlayer(QWidget *parent)
 	showMaximized(); //最大化显示   
 	setMinimumSize(QSize(800, 512)); //设置窗口最小尺寸
 
-	LOG4CPLUS_INFO(MyLog::getInstance()->logger, "Program Start, init UI");
 	initUI();
 
 #ifdef _DEBUG
@@ -68,7 +66,6 @@ void FFVideoPlayer::initUI()
 	setButtonBackImage(ui.btnPlayVideo, "./Resources/play.png");
 	setButtonBackImage(ui.btnSetVolume, "./Resources/volume.png");
 	setButtonBackImage(ui.btnFullScreen, "./Resources/fullscreen.png");
-	setButtonBackImage(ui.btnCutImage, "./Resources/cutimage.png");
 }
 
 void FFVideoPlayer::allConnect()
@@ -92,7 +89,6 @@ void FFVideoPlayer::allConnect()
 
 void FFVideoPlayer::OpenLocalVideo()
 {
-	LOG4CPLUS_INFO(MyLog::getInstance()->logger, "Open Local Video File");
 	QString filename = QFileDialog::getOpenFileName(this, QString::fromLocal8Bit("选择视频文件"));
 	if (filename.isEmpty())
 	{
@@ -110,7 +106,6 @@ void FFVideoPlayer::OpenLocalVideo()
 	if (totalMs <= 0)
 	{
 		QMessageBox::information(this, "err", "file open failed!");
-		LOG4CPLUS_INFO(MyLog::getInstance()->logger, "Open Local Video File Failed");
 		return;
 	}
 
@@ -221,20 +216,6 @@ void FFVideoPlayer::resizeEvent(QResizeEvent *e)
 		ui.openGLWidget->move(0, 0);
 		ui.openGLWidget->resize(this->width(), this->height());
 	}
-	else
-	{
-		ui.openGLWidget->move(0, 0);
-		ui.openGLWidget->resize(this->width(), this->height() - 62);
-
-		ui.timeSlider->move(0, this->height() - 80);
-		ui.timeSlider->resize(this->width(), 20);
-		ui.label_Playtime->move(5, this->height() - 60);
-		ui.btnPlayVideo->move(this->width() / 2 - 15, this->height() - 60);
-		ui.btnSetVolume->move(this->width() * 4 / 5, this->height() - 60);
-		ui.sliderVolume->move(this->width() * 4 / 5 + 31, this->height() - 60);
-		ui.btnFullScreen->move(this->width() - 40, this->height() - 60);
-		ui.btnCutImage->move(this->width() * 4 / 5 - 40, this->height() - 60);
-	}
 }
 
 /**
@@ -279,7 +260,6 @@ void FFVideoPlayer::fullShow()
 	ui.btnSetVolume->hide();
 	ui.sliderVolume->hide();
 	ui.btnFullScreen->hide();
-	ui.btnCutImage->hide();
 }
 
 /**
@@ -296,14 +276,11 @@ void FFVideoPlayer::normalShow()
 	ui.btnSetVolume->show();
 	ui.sliderVolume->show();
 	ui.btnFullScreen->show();
-	ui.btnCutImage->show();
 }
 
 //菜单--打开网络流
 void FFVideoPlayer::OpenNetStreamDlg()
 {
-	//NetStreamDlg nDlg;
-	
 	m_NetDlg.exec();
 }
 
@@ -348,17 +325,10 @@ void FFVideoPlayer::setButtonBackImage(QPushButton *button, QString image)
 
 void FFVideoPlayer::slotPushStream(QString address)
 {
-	LOG4CPLUS_INFO(MyLog::getInstance()->logger, "Push Net Stream");
 	g_NetStream = 1;
 
 	setWindowTitle(address);
 	NetStreamThread::getInstance()->startPlay(address);
-}
-
-//获取源代码
-void FFVideoPlayer::GetSourceCode()
-{
-	QDesktopServices::openUrl(QUrl(QString("https://github.com/linghuzhangmen/FFVideoPlayer.git")));
 }
 
 void FFVideoPlayer::mousePressEvent(QMouseEvent *event)
